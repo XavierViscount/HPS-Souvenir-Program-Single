@@ -84,12 +84,20 @@ document.getElementById("submit-btn").addEventListener("click", () => {
     quantity: state.quantity,
   };
 
-  if (!telegramApp || typeof telegramApp.sendData !== "function") {
+  // 1. Verify Telegram environment using the 'platform' property
+  if (!telegramApp || telegramApp.platform === "unknown") {
     alert("This page must be opened inside Telegram to send the order.");
     return;
   }
 
-  telegramApp.sendData(JSON.stringify(payload));
+  // 2. Attempt to send the data
+  try {
+    telegramApp.sendData(JSON.stringify(payload));
+  } catch (error) {
+    // If it fails here while inside Telegram, the WebApp SDK is likely missing
+    alert("Error: sendData is unavailable. Make sure telegram-web-app.js is in your index.html.");
+    console.error("sendData error:", error);
+  }
 });
 
 renderFlowers();
