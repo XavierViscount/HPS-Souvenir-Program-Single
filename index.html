@@ -1,66 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Single Flower Order</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  </head>
-  <body>
-    <main class="app-shell">
-      <header class="topbar">
-        <div class="brand">
-          <span class="brand-mark">🌸</span>
-          <div>
-            <p class="eyebrow">Honesty Private School</p>
-            <h1>Single Flower Order</h1>
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Honesty Private School flower bouquet order Mini App">
+  <title>Flower Selection Program | Honesty Private School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="app.js?v=6" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup" aria-label="Honesty Private School">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo/image.png" alt="HPS Logo" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+        </span>
+        <span class="brand-copy"><strong>HONESTY</strong><small>PRIVATE SCHOOL</small></span>
+      </div>
+      <div class="program-label">FLOWER SELECTION PROGRAM</div>
+      <button class="icon-button" id="close-app" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </header>
+
+    <nav class="progress" aria-label="Order progress">
+      <div class="progress-step is-active" data-progress="id"><span>01</span><small>Student ID</small></div>
+      <i></i>
+      <div class="progress-step" data-progress="flowers"><span>02</span><small>ပန်းတစ်မျိုးတည်း</small></div>
+      <i></i>
+      <div class="progress-step" data-progress="review"><span>03</span><small>အတည်ပြုရန်</small></div>
+    </nav>
+
+    <main>
+      <section class="screen id-screen" data-screen="id">
+        <div class="entry-grid">
+          <div class="entry-copy">
+            <p class="eyebrow">A PERSONAL GIFT · HPS</p>
+            <h1>အမှတ်တရပန်းစည်း<br>စတင်မှာယူရန်</h1>
+            <p class="intro-copy">အမှတ်တရကတ်ပေါ်တွင် ဖော်ပြရန် ကျောင်းသား/ကျောင်းသူ၏ Student ID ကို ဖြည့်သွင်းပါ။</p>
+            <form id="student-form" novalidate>
+              <label for="student-id">STUDENT ID</label>
+              <input id="student-id" name="student_id" type="text" maxlength="48" autocomplete="off" placeholder="ဥပမာ - HPS-ISS9003" required>
+              <p class="field-note">ဤ ID ကို အမှတ်တရကတ်ပေါ်တွင် ရိုက်နှိပ်ပေးပါမည်။</p>
+              <button class="primary-button" type="submit">ဆက်လက်ရန် <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+            </form>
           </div>
-        </div>
-      </header>
-
-      <section class="panel">
-        <label class="field-label" for="student-id">Student ID</label>
-        <input id="student-id" type="text" placeholder="HPS-ISS9003" maxlength="48" />
-      </section>
-
-      <section class="panel">
-        <div class="section-head">
-          <h2>Select Flower</h2>
-        </div>
-        <div id="flower-grid" class="flower-grid"></div>
-      </section>
-
-      <section class="panel quantity-panel">
-        <div class="section-head">
-          <h2>Quantity</h2>
-        </div>
-        <div class="quantity-control">
-          <button id="minus-btn" type="button" aria-label="Decrease quantity">−</button>
-          <span id="quantity-value">1</span>
-          <button id="plus-btn" type="button" aria-label="Increase quantity">+</button>
+          <aside class="botanical-panel" aria-label="Flower bouquet preview">
+            <div class="panel-caption"><span>01 / 03</span><span>ပန်းစည်းလှူဒါန်းမှု</span></div>
+            <div class="flower-still-life">
+              <img class="still-leaf" src="assets/flowers/kankaw.png" alt="">
+              <img class="still-rose" src="assets/flowers/rose.png" alt="">
+              <img class="still-sunflower" src="assets/flowers/sunflower.png" alt="">
+              <img class="still-orchid" src="assets/flowers/orchid.png" alt="">
+            </div>
+            <div class="panel-note"><span>HONESTY · 2026</span><span>အမှတ်တရ</span></div>
+          </aside>
         </div>
       </section>
 
-      <section class="panel review-panel">
-        <h2>Review</h2>
-        <div class="review-row">
-          <span>Flower</span>
-          <strong id="review-flower">Rose</strong>
+      <section class="screen picker-screen single-screen" data-screen="flowers" hidden>
+        <div class="screen-heading">
+          <div><p class="eyebrow">02 / ONE FLOWER TYPE</p><h1>ပန်းတစ်မျိုးရွေးပါ</h1></div>
+          <button class="small-link" type="button" data-back="id">ID ပြင်ဆင်ရန်</button>
         </div>
-        <div class="review-row">
-          <span>Quantity</span>
-          <strong id="review-quantity">1</strong>
-        </div>
-        <div class="review-row">
-          <span>Student ID</span>
-          <strong id="review-student">—</strong>
+        <p class="intro-copy compact-copy">ပန်းအမျိုးအစားတစ်မျိုးကို ရွေးပြီး ပွင့်ရေအတွက်ကို သတ်မှတ်ပါ။</p>
+        <div class="single-flower-grid" id="single-flower-grid"></div>
+        <div class="selection-footer">
+          <div class="selection-summary"><span>ရွေးချယ်ထားသည်</span><strong><b id="single-total">1</b><small> / 10</small></strong></div>
+          <div class="quantity-control single-quantity-control">
+            <button class="stepper-button" id="single-minus" type="button" aria-label="Remove one flower"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+            <button class="stepper-button" id="single-plus" type="button" aria-label="Add one flower"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+          <button class="primary-button" id="review-single" type="button">စစ်ဆေးရန် <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
         </div>
       </section>
 
-      <button id="submit-btn" class="submit-btn" type="button">Submit order</button>
+      <section class="screen review-screen" data-screen="review" hidden>
+        <p class="eyebrow">FINAL REVIEW</p>
+        <h1>အော်ဒါအချက်အလက်<br>အတည်ပြုရန်</h1>
+        <div class="review-id"><span>STUDENT ID</span><strong id="review-student-id"></strong></div>
+        <div class="review-order">
+          <div class="review-heading"><span>ရွေးချယ်ထားသောပန်း</span><strong id="review-total"></strong></div>
+          <div id="review-items"></div>
+        </div>
+        <div class="selection-footer review-footer">
+          <button class="text-button" type="button" data-back="flowers"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg> ပြင်ဆင်ရန်</button>
+          <button class="primary-button" id="submit-btn" type="button">အော်ဒါတင်ရန် <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+        </div>
+      </section>
+
     </main>
-
-    <script src="app.js" defer></script>
-  </body>
+    <footer class="app-footer"><span>HONESTY PRIVATE SCHOOL</span><span>ပန်းစည်းလှူဒါန်းမှု · 2026</span></footer>
+  </div>
+</body>
 </html>
