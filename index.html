@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Flower Order</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">🌸</span>
+          <div>
+            <p class="eyebrow">Honesty Private School</p>
+            <h1>Single Flower Order</h1>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel">
+        <label class="field-label" for="student-id">Student ID</label>
+        <input id="student-id" type="text" placeholder="HPS-ISS9003" maxlength="48" />
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <h2>Select Flower</h2>
+        </div>
+        <div id="flower-grid" class="flower-grid"></div>
+      </section>
+
+      <section class="panel quantity-panel">
+        <div class="section-head">
+          <h2>Quantity</h2>
+        </div>
+        <div class="quantity-control">
+          <button id="minus-btn" type="button" aria-label="Decrease quantity">−</button>
+          <span id="quantity-value">1</span>
+          <button id="plus-btn" type="button" aria-label="Increase quantity">+</button>
+        </div>
+      </section>
+
+      <section class="panel review-panel">
+        <h2>Review</h2>
+        <div class="review-row">
+          <span>Flower</span>
+          <strong id="review-flower">Rose</strong>
+        </div>
+        <div class="review-row">
+          <span>Quantity</span>
+          <strong id="review-quantity">1</strong>
+        </div>
+        <div class="review-row">
+          <span>Student ID</span>
+          <strong id="review-student">—</strong>
+        </div>
+      </section>
+
+      <button id="submit-btn" class="submit-btn" type="button">Submit order</button>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
